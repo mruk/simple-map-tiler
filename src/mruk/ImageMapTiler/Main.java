@@ -5,24 +5,27 @@ import java.io.*;
 //import javax.swing.*; 
 
 public class Main {
-
+	
+	
 	public static void main(String[] args) throws IOException {
 
         //SWING GUI
 		//createAndShowGUI();
-        //End of SWING GUI        
+        //End of SWING GUI 
+		ConfigReader configReader = new ConfigReader("resources/config.json");
+		System.out.println("map slices: "+configReader.getZoomLvls());
 		
-		// TODO - make ConfigLoader
-		// End of ConfigLoader
+		for (int i=0; i<configReader.getZoomLvls(); i++){
+			int zoomLvl = configReader.getItyZoomLvl(i);
+			System.out.println(zoomLvl);
 
-		// ImageLoader
-		BufferedImage image = Crawler.loadImage("/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_1.5k.png");
-		// End of ImageLoader
-
-		// TODO - make Crawler
-		Crawler.crawle(image, "config");
-		// End of Crawler
-		
+			String imgPath = configReader.getItyImgPath(i);
+			System.out.println(imgPath);
+			// Crawler
+			BufferedImage img = Crawler.loadImage(imgPath);
+			Crawler.crawle(img, zoomLvl);
+			// End of Crawler
+		}	
 		System.out.println("Mini images saved. EOP");
 	}
 	

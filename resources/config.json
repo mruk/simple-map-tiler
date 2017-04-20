@@ -5,9 +5,7 @@
   "slices": [
     {
       "zoom": 2,
-      "input": {
-        "path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_0.75k.png"
-      },
+      "input-path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_0.75k.png",
       "output": {
         "path": "resources",
         "rows": 0,
@@ -16,9 +14,7 @@
     },
     {
       "zoom": 3,
-      "input": {
-        "path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_1.5k.png"
-      },
+      "input-path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_1.5k.png",
       "output": {
         "path": "resources",
         "rows": 0,
@@ -27,9 +23,7 @@
     },
     {
       "zoom": 4,
-      "input": {
-        "path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_3k.png"
-      },
+      "input-path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_3k.png",
       "output": {
         "path": "resources",
         "rows": 0,
@@ -38,14 +32,13 @@
     },
     {
       "zoom": 5,
-      "input": {
-        "path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_6k.png"
-      },
+      "input-path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_6k.png",
       "output": {
         "path": "resources",
         "rows": 0,
         "cols": 0
       }
     }
-  ]
+  ],
+  "magicNumber": 0.42
 }
