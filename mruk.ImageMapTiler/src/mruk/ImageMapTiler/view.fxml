@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<VBox prefHeight="560.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mruk.ImageMapTiler.Controller">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="451.0" prefWidth="720.0" VBox.vgrow="ALWAYS">
+      <children>
+            <Text layoutX="24.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" AnchorPane.leftAnchor="24.0" AnchorPane.topAnchor="8.0">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Button fx:id="loadConfigButton" layoutX="51.0" layoutY="13.0" maxWidth="256.0" minWidth="64.0" mnemonicParsing="false" text="Load" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="13.0" />
+            <Separator layoutX="52.0" layoutY="45.0" prefHeight="8.0" prefWidth="645.0" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="45.0" />
+            <Text layoutX="22.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="52.0">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Text>
+            <Label fx:id="labelMapSource" layoutX="133.0" layoutY="63.0" maxWidth="256.0" minWidth="256.0" text="SOURCE MAP LVL" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="63.0" />
+            <ProgressBar fx:id="overallProgressBar" layoutX="133.0" layoutY="82.0" prefHeight="20.0" prefWidth="256.0" progress="0.0" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="82.0" />
+            <ImageView fx:id="tileImage" fitHeight="256.0" fitWidth="256.0" layoutX="133.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="102.0" />
+            <Label fx:id="actualTileStatus" layoutX="133.0" layoutY="380.0" maxWidth="256.0" minWidth="256.0" text="OUTPUT TILE" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="380.0" />
+            <ProgressBar fx:id="lvlProgressBar" layoutX="133.0" layoutY="358.0" prefHeight="20.0" prefWidth="256.0" progress="0.0" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="358.0" />
+            <Button fx:id="mainButton" layoutX="51.0" layoutY="57.0" maxWidth="256.0" minWidth="64.0" mnemonicParsing="false" onAction="#runImageCrawler" text="Start" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="57.0" />
+            <Separator layoutX="52.0" layoutY="484.0" prefHeight="8.0" prefWidth="645.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="52.0" />
+            <Label fx:id="labelConfigSource" layoutX="133.0" layoutY="17.0" maxWidth="256.0" minWidth="256.0" text="waiting for config file..." AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="17.0" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>
