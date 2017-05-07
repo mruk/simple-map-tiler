@@ -51,7 +51,7 @@
             <ImageView fx:id="tileImage" fitHeight="256.0" fitWidth="256.0" layoutX="133.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="102.0" />
             <Label fx:id="actualTileStatus" layoutX="133.0" layoutY="380.0" maxWidth="256.0" minWidth="256.0" text="OUTPUT TILE" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="380.0" />
             <ProgressBar fx:id="lvlProgressBar" layoutX="133.0" layoutY="358.0" prefHeight="20.0" prefWidth="256.0" progress="0.0" AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="358.0" />
-            <Button fx:id="mainButton" layoutX="51.0" layoutY="57.0" maxWidth="256.0" minWidth="64.0" mnemonicParsing="false" onAction="#runImageCrawler" text="Start" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="57.0" />
+            <Button fx:id="startCrawleButton" layoutX="51.0" layoutY="57.0" maxWidth="256.0" minWidth="64.0" mnemonicParsing="false" onAction="#runImageCrawler" text="Start" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="57.0" />
             <Separator layoutX="52.0" layoutY="484.0" prefHeight="8.0" prefWidth="645.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="52.0" />
             <Label fx:id="labelConfigSource" layoutX="133.0" layoutY="17.0" maxWidth="256.0" minWidth="256.0" text="waiting for config file..." AnchorPane.leftAnchor="133.0" AnchorPane.topAnchor="17.0" />
       </children>

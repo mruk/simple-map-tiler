@@ -15,13 +15,15 @@ class ConfigReader {
 	ConfigReader(String t){
 		config = new JSONObject();
 		loadConfig(t);
+		
+  		ConsoleTrace.log("map slices: "+getZoomLvls());
 	}
 	
 	
 	void loadConfig(String file) {
 		try {
 			config = (JSONObject) parser.parse(new FileReader(file));
-			System.out.println(config);
+			ConsoleTrace.log(config.toString());
 		} catch (IOException | org.json.simple.parser.ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -47,5 +49,12 @@ class ConfigReader {
 		JSONObject slice = (JSONObject) slices.get(i);	
 		String out = (String)slice.get("input-path");
 		return out;
+	}
+	
+	int getTileSize(){
+		int pixelSize = 256; // world standard size
+		JSONObject tile = (JSONObject) config.get("tile");
+		pixelSize = (int)tile.get("pixelsize");
+		return pixelSize;
 	}
 }

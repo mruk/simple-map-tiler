@@ -21,7 +21,7 @@ class Crawler {
 	String config;
 	static int TILE_SIZE = 256;
 
-	Crawler (BufferedImage image, String config){
+	Crawler (BufferedImage image, ConfigReader config){
 		this.image = image;
 	}
 
@@ -30,7 +30,7 @@ class Crawler {
 		int rows = tileAutoRes(image.getHeight());
 		int cols = tileAutoRes(image.getWidth());
 
-		File zoomLvlFolder = makeChildFolder(zoomLvl);
+		File zoomLvlFolder = makeChildFolder(new File("resources"), zoomLvl);
 		
 		BufferedImage tile = new BufferedImage(TILE_SIZE, TILE_SIZE, image.getType());
 		Graphics2D g2d = tile.createGraphics();
@@ -67,26 +67,17 @@ class Crawler {
 		});
 	}
 
-	private static File makeChildFolder(File source, int x) {
-		File file = new File(source + "/" + x);
-		makeConcreteFolder(file);
-		return file;
-	}
-
-	private static File makeChildFolder(int i) {
-		File file = new File("resources/" + i);
-		makeConcreteFolder(file);
-		return file;
-	}
-	
-	private static void makeConcreteFolder(File file) {
-		if (!file.exists()) {
-			if (file.mkdir()) {
-				System.out.println("- "+ file.getPath() + " is created.");
+	private static File makeChildFolder(File source, int subFolder) {
+		File newFile = new File(source + "/" + subFolder);
+		//makeConcreteFolder(newFile);
+		if (!newFile.exists()) {
+			if (newFile.mkdir()) {
+				ConsoleTrace.log("- "+ newFile.getPath() + " is created.");
 			} else {
-				System.out.println("mkdir() Failed: "+ file.getPath());
+				ConsoleTrace.log("mkdir() Failed: "+ newFile.getPath());
 			}
 		}
+		return newFile;
 	}
 
 	BufferedImage getTile(){
@@ -98,13 +89,19 @@ class Crawler {
 	static BufferedImage loadImage(String url) throws IOException{
         File file = new File(url);
         FileInputStream fis = new FileInputStream(file);
-        BufferedImage image = ImageIO.read(fis);
+        BufferedImage image = null;
+		try {
+			image = ImageIO.read(fis);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return image;
 	}
 
 	static void saveImage(BufferedImage tile, String url, String fileFormat) throws IOException{
         ImageIO.write(tile, fileFormat, new File(url+"."+fileFormat));
-        System.out.println(url+" Saved...");
+        ConsoleTrace.log(url+" Saved...");
 	}
 
 	static int tileAutoRes(int x){
