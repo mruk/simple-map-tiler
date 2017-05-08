@@ -5,7 +5,7 @@
   "slices": [
     {
       "zoom": 2,
-      "input-path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_0.75k.png",
+      "input-path": "D:/teleport/My Dropbox/LIGHTWORK/a-map/MapaRosyjska_0.75k.png",
       "output": {
         "path": "resources",
         "rows": 0,
@@ -23,7 +23,7 @@
     },
     {
       "zoom": 4,
-      "input-path": "/Users/makpiec/Dropbox/lightwork/a-map/MapaRosyjska_3k.png",
+      "input-path": "D:/teleport/My Dropbox/LIGHTWORK/a-map/MapaRosyjska_3k.png",
       "output": {
         "path": "resources",
         "rows": 0,

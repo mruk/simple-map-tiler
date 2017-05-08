@@ -58,11 +58,14 @@ class Crawler {
 	private static void guiUpdate(Label actualTileStatus, ProgressBar lvlProgressBar, int rows, int cols, int x, int y,
 			String outUrl) {
 		Double val = (double) (x * rows + y)/(cols * rows);
+		RamData.getRamData().setLvlProgress(val);
+		
 		Platform.runLater(new Runnable() {
 			@Override 
 		    public void run() {
 				actualTileStatus.setText(outUrl);
-				lvlProgressBar.setProgress(val);
+				Controller.updateLvlProgressBarValue();
+				lvlProgressBar.setProgress(RamData.getRamData().getLvlProgress());
 				}
 		});
 	}

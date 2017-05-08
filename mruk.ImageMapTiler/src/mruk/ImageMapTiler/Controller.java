@@ -18,6 +18,8 @@ import javafx.scene.image.ImageView;
 
 public class Controller implements Initializable{
 	@FXML
+    private Button loadConfigButton;
+	@FXML
     private Button startCrawleButton;
 	@FXML
 	private ImageView tileImageView;
@@ -25,14 +27,18 @@ public class Controller implements Initializable{
 	private Label actualTileStatus;
 	@FXML
 	private Label labelMapSource;
+	@FXML
+	private Label labelConfigSource;
 	@FXML	
-	private ProgressBar lvlProgressBar;
+	private static ProgressBar lvlProgressBar;
+	@FXML	
+	private ProgressBar overallProgressBar;
 	
 	@FXML
 	void runImageCrawler(ActionEvent event){
 		startImgProcessingTask();
 	}
-
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -122,6 +128,10 @@ public class Controller implements Initializable{
 				((Labeled) control).setText(slicedText);
 				}
 		});
+	}
+	
+	static void updateLvlProgressBarValue(){		
+		lvlProgressBar.setProgress(RamData.getRamData().getLvlProgress());
 	}
 
 }
