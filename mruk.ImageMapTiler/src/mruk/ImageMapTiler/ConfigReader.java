@@ -16,7 +16,7 @@ class ConfigReader {
 		config = new JSONObject();
 		loadConfig(t);
 		
-  		ConsoleTrace.log("map slices: "+getZoomLvls());
+  		ConsoleTrace.log("map slices: "+getAmountOfZoomLvls());
 	}
 	
 	
@@ -30,7 +30,7 @@ class ConfigReader {
 		}
 	}
 	
-	int getZoomLvls(){
+	int getAmountOfZoomLvls(){
 		int out = 0;
 		JSONArray slices = (JSONArray) config.get("slices");
 		out = slices.size();

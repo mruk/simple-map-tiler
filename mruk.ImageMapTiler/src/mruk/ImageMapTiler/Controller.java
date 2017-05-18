@@ -48,8 +48,9 @@ public class Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		System.out.println("GUI Controller started.");
-
-		overallProgressBar.setProgress(0.50);
+		
+		String message = RamData.getRamData().getConfigStatus();
+		setControlLabeledText(labelConfigSource, message, message.length());
 	}
 
 	private void startImgProcessingTask() {
@@ -65,28 +66,22 @@ public class Controller implements Initializable {
 
 	private void runImgProcessingTask() {
 		ConsoleTrace.log("Map tiling started.");
-		int PASSED_CHARS = 7;
-		setControlLabeledText(startCrawleButton, "Working", PASSED_CHARS);
-
-		ConfigReader configReader = new ConfigReader("resources/config.json");
-
-		iterateOverZoomLvls(configReader);
-
+		
+		setControlLabeledText(startCrawleButton, "Working");
+		iterateOverZoomLvls(RamData.getRamData().config);
+		setControlLabeledText(startCrawleButton, "Start");
+		
 		ConsoleTrace.log("Mini images saved. EOP");
-		Platform.runLater(new Runnable() {
-			@Override
-			public void run() {
-				startCrawleButton.setText("Start");
-			}
-		});
 	}
 
 	/**
 	 * @param configReader
 	 */
 	private void iterateOverZoomLvls(ConfigReader configReader) {
-		for (int i = 0; i < configReader.getZoomLvls(); i++) {
+		for (int i = 0; i < configReader.getAmountOfZoomLvls(); i++) {
 			iterationOverOneZoomLvl(configReader, i);
+			Double val = 0.01 * (double) (100*(i+1)/configReader.getAmountOfZoomLvls());
+			overallProgressBar.setProgress(val);
 		}
 	}
 
@@ -114,7 +109,7 @@ public class Controller implements Initializable {
 			String message = "Loading lvl image...";
 			setControlLabeledText(labelMapSource, message, message.length());
 			sourceMap = Crawler.loadImage(imgPath);
-			setControlLabeledText(labelMapSource, imgPath, 42);
+			setControlLabeledText(labelMapSource, imgPath, 36);
 
 			crawle(sourceMap, zoomLvl);
 		} catch (IOException e) {
@@ -182,7 +177,6 @@ public class Controller implements Initializable {
 			public void run() {
 				actualTileStatus.setText(outUrl);
 				lvlProgressBar.setProgress(RamData.getRamData().getLvlProgress());
-				// lvlProgressBar.setProgress(RamData.getRamData().getLvlProgress());
 			}
 		});
 
@@ -194,11 +188,19 @@ public class Controller implements Initializable {
 	 * @param slicedChars
 	 */
 	void setControlLabeledText(Control control, String txt, int slicedChars) {
+		String slicedText = txt.substring(txt.length() - slicedChars, txt.length());
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				String slicedText = txt.substring(txt.length() - slicedChars, txt.length());
 				((Labeled) control).setText(slicedText);
+			}
+		});
+	}
+	void setControlLabeledText(Control control, String txt) {
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				((Labeled) control).setText(txt);
 			}
 		});
 	}
